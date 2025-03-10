@@ -1,139 +1,148 @@
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pink</title>
-    <style>
-        body {
-            background-color: #f1d5da;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        @media (min-width: 768px) {
-            .content {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: auto;
-                max-width: none;
-            }
-        }
-
-        .showImg {
-            overflow: clip;
-            overflow-clip-margin: content-box;
-            width: 200px;
-            height: 200px;
-        }
-
-        .question {
-            font-size: 26px;
-            color: #68495b;
-        }
-
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-
-        @media (min-width: 768px) {
-            button {
-                font-size: 18px;
-            }
-        }
-
-        .ok {
-            background-color: #d4818e;
-            color: white;
-        }
-
-        .no {
-            position: relative;
-            background-color: #6784b1;
-            color: white;
-        }
-
-        .yes_scree {
-            opacity: 0;
-            animation: show .7s forwards;
-        }
-
-        @keyframes show {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .love {
-            font-size: 40px;
-            color: #68495b;
-        }
-
-        .hug {
-            width: 300px;
-            height: 300px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>刘兴 - 顶级运营大师</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+    }
+    header {
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 48px;
+      margin: 0;
+    }
+    header p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+    }
+    nav a {
+      color: #764ba2;
+      font-size: 18px;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #667eea;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    section h2 {
+      font-size: 28px;
+      color: #764ba2;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #764ba2;
+      padding-bottom: 10px;
+    }
+    .profile {
+      display: block;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      margin: 0 auto 20px auto;
+      object-fit: cover;
+      border: 5px solid #764ba2;
+    }
+    ul, ol {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    footer {
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    a {
+      color: #764ba2;
+    }
+    a:hover {
+      color: #667eea;
+    }
+  </style>
 </head>
-
 <body>
-
-    <div class="content">
-        <img class="showImg" src="./images/heart.png">
-        <p class="question">可以成为我的老婆吗?</p>
-        <div class="btn_box">
-            <button class="ok">可以</button>
-            <button class="no">不要</button>
-        </div>
-    </div>
-    <script>
-        const img_list = ['./images/heart.png', './images/shocked.png', './images/think.png', './images/angry.png', './images/crying.png']
-        const no_words = ['不要', '? 你认真的吗...', '要不在想想?', '不许选这个!!!', '我真的会很伤心...', '不行啊 开始痛了', '我讨厌你']
-        const yes_scree = `
-            <div class="yes_scree">
-                <h1 class="love">!!!喜欢你!! ( >᎑<)♡︎ᐝ</h1>
-                <img src='./images/hug.png' alt="" class="hug">
-            </div>`;
-        const show_img = document.querySelector('.showImg')
-        const question = document.querySelector('.question')
-        const ok = document.querySelector('.ok')
-        const no = document.querySelector('.no')
-        ok.addEventListener('click', () => {
-            document.querySelector('body').innerHTML = yes_scree
-        })
-        let clickCount = 0;
-        let scale = 1;
-        let left_px = 0;
-        no.addEventListener('click', () => {
-            clickCount++;
-            scale += 1.2;
-            ok.style.transform = `scale(${scale})`;
-            no.style.transform = `translateX(${clickCount * 50}px)`;
-            // 文字和图片上移动
-            question.style.transform = `translateY(-${clickCount * 25}px)`
-            show_img.style.transform = `translateY(-${clickCount * 25}px)`
-            if (clickCount < 5) {
-                show_img.setAttribute('src', img_list[clickCount])
-            }
-            if (clickCount < 7) {
-                no.innerText = no_words[clickCount]
-
-            }
-        })
-    </script>
+  <header>
+    <h1>刘兴</h1>
+    <p>顶级运营大师 | 精准策略 · 卓越执行 · 驱动无限增长</p>
+  </header>
+  <nav>
+    <a href="#about">关于刘兴</a>
+    <a href="#experience">运营经历</a>
+    <a href="#achievements">卓越成就</a>
+    <a href="#contact">合作交流</a>
+  </nav>
+  <div class="container">
+    <section id="about">
+      <h2>关于刘兴</h2>
+      <img src="https://loremflickr.com/250/250/executivea" alt="刘兴" class="profile">
+      <p>
+        刘兴是业界公认的运营奇才，他以超前的市场洞察力和无与伦比的执行力，带领团队不断突破运营极限。无论是制定战略规划还是整合资源，他总能以创新和高效的手段，让企业在激烈的市场竞争中始终处于领先地位。
+      </p>
+    </section>
+    <section id="experience">
+      <h2>运营经历</h2>
+      <p>
+        拥有超过十年的运营管理经验，刘兴在各大知名企业和初创公司中均留下了浓墨重彩的一笔。他以精准的数据分析和灵活的市场策略，成功推动了多个项目实现跨越式发展。
+      </p>
+      <ul>
+        <li><strong>战略制定：</strong>为企业量身定制运营方案，实现品牌价值和市场份额的双重提升。</li>
+        <li><strong>团队领导：</strong>打造高效团队，激发成员潜能，实现从战略到执行的完美衔接。</li>
+        <li><strong>创新驱动：</strong>以数据为导向，持续优化运营流程，确保企业始终处于行业前沿。</li>
+      </ul>
+    </section>
+    <section id="achievements">
+      <h2>卓越成就</h2>
+      <p>
+        刘兴的卓越表现不仅赢得了同行的尊敬，更为企业带来了显著的业绩增长。他的每一个决策都经过精心打磨，每一个项目都创造出惊人的商业价值。
+      </p>
+      <ol>
+        <li>策划并执行多个年度营销战略，使销售额实现翻番甚至数倍增长。</li>
+        <li>主导公司数字化转型，推动利润率大幅提升，并成功开拓国际市场。</li>
+        <li>多次荣获“年度最佳运营专家”称号，成为行业内公认的标杆人物。</li>
+      </ol>
+    </section>
+    <section id="contact">
+      <h2>合作交流</h2>
+      <p>
+        如果您希望与刘兴探讨前沿运营策略，或者寻找业务合作伙伴，欢迎通过以下方式与他取得联系，共同开创辉煌未来：
+      </p>
+      <ul>
+        <li>Email: liuxing@example.com</li>
+        <li>电话: 987-654-3210</li>
+        <li>LinkedIn: <a href="https://linkedin.com" target="_blank">刘兴的LinkedIn</a></li>
+      </ul>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 刘兴. 保留所有权利.</p>
+  </footer>
 </body>
-
 </html>
